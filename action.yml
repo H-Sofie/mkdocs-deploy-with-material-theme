@@ -1,0 +1,15 @@
+# action.yml
+name: 'Deploy MkDocs'
+description: 'Deploys MkDocs site'
+author: 'H-Sofie, h-sofie@qq.com'
+branding:
+  icon: 'arrow-up-circle'
+  color: 'orange'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run action.sh
+      shell: bash
+      run: chmod +x $GITHUB_ACTION_PATH/action.sh && $GITHUB_ACTION_PATH/action.sh
+ 
