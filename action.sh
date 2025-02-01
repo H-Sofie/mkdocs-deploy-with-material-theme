@@ -6,11 +6,12 @@ function print_info() {
     echo -e "\e[36mINFO: ${1}\e[m"
 }
 
-sudo apt update
-for package in ${EXTRA_PACKAGES}
-do
-    sudo apt install -y "${package}"
-done
+if [ -n "${EXTRA_PACKAGES}" ]; then
+    sudo apt update
+    for package in ${EXTRA_PACKAGES}; do
+        sudo apt install -y "${package}"
+    done
+fi
 
 python -m pip install --upgrade pip
 if [ -n "${REQUIREMENTS}" ] && [ -f "${GITHUB_WORKSPACE}/${REQUIREMENTS}" ]; then
